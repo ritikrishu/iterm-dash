@@ -9,15 +9,15 @@ Press <kbd>n</kbd> to land in the next one that needs you.</p>
 
 <p>
 <a href="https://github.com/ritikrishu/iterm-dash/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/ritikrishu/iterm-dash/actions/workflows/ci.yml/badge.svg"></a>
-<a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-blue.svg"></a>
+<a href="https://github.com/ritikrishu/iterm-dash/blob/main/LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-blue.svg"></a>
 <img alt="macOS and iTerm2" src="https://img.shields.io/badge/macOS-iTerm2%203.7%2B-black.svg">
 </p>
 
-<p><a href="#install">Install</a> · <a href="#how-it-works">How it works</a> · <a href="#faq">FAQ</a> · <a href="docs/architecture.md">Architecture</a></p>
+<p><a href="#install">Install</a> · <a href="#how-it-works">How it works</a> · <a href="#faq">FAQ</a> · <a href="https://github.com/ritikrishu/iterm-dash/blob/main/docs/architecture.md">Architecture</a></p>
 
-<img src="docs/assets/hero.gif" width="900" alt="The iterm-dash grid with six scripted Claude Code sessions updating live. One cell turns blue with 'Needs your input'. The arrow and Space keys open it to read Claude's question, and a caption shows Enter jumping to its iTerm2 tab.">
+<img src="https://raw.githubusercontent.com/ritikrishu/iterm-dash/main/docs/assets/hero.gif" width="900" alt="iterm-dash running in a real iTerm2 window, showing six Claude Code sessions live. One cell turns blue with 'Needs your input'. Space opens it full size, n switches iTerm2 to that session's tab, Command-1 returns to the dashboard, and 2 jumps straight to another session's tab.">
 
-<sub>Recorded with <code>iterm-dash demo</code>, which plays scripted sessions. In real use, <kbd>Enter</kbd> brings that session's iTerm2 tab to the front.</sub>
+<sub>Recorded in a real iTerm2 window. The six sessions are scripted stand-ins, so no private work is on screen; the dashboard, their status and the tab switches are real.</sub>
 
 </div>
 
@@ -35,7 +35,7 @@ iterm-dash is one more iTerm2 tab that shows all the others live. The sessions t
 
 A session waiting on a question turns blue with **Needs your input** and shows the question under its title. A finished one turns green with **Done · your turn**. Every cell shows how long ago its status changed, so a session that has been waiting a while stands out. The header counts them, and the page title does too, for example `(2) iterm-dash`.
 
-<img src="docs/assets/needs-you.png" width="900" alt="The header reads '1 needs input · 1 done · 4 working'. Below it, a blue 'Needs your input' cell shows Claude's question, next to a green 'Done · your turn' cell finished 4 minutes ago.">
+<img src="https://raw.githubusercontent.com/ritikrishu/iterm-dash/main/docs/assets/needs-you.png" width="900" alt="The header reads '1 needs input · 1 done · 4 working'. Below it, a blue 'Needs your input' cell shows Claude's question, next to a green 'Done · your turn' cell finished 4 minutes ago.">
 
 ### The real screen, not a summary
 
@@ -61,7 +61,7 @@ The mouse works too: click a cell to peek, double-click to jump.
 
 <kbd>Space</kbd> opens the focused session full size, so you can read the question or the diff and decide whether it needs you now.
 
-<img src="docs/assets/peek.png" width="900" alt="An enlarged session showing Claude's question about how a database backfill should treat existing keys, with numbered options.">
+<img src="https://raw.githubusercontent.com/ritikrishu/iterm-dash/main/docs/assets/peek.png" width="900" alt="An enlarged session showing Claude's question about how a database backfill should treat existing keys, with numbered options.">
 
 ### Works with the tabs you already have
 
@@ -136,7 +136,7 @@ The server keeps running until iTerm2 quits or you run `iterm-dash stop`.
 3. **Status** comes from iTerm2's Claude Code integration (`iterm2.get_session_status`), the same source as iTerm2's Session Status tool.
 4. **The page** is served on `127.0.0.1` with a per-run token and opened as an iTerm2 browser tab. A WebSocket sends it only the rows that changed, and it renders each screen at full width and scales it to fit the cell. Claude Code ends every row with a hard line break, so text can't be re-flowed into a narrower cell without breaking it.
 
-In the same setup, with several sessions working, the server used about 1% CPU. The full design, including the edge cases that shaped it, is in [docs/architecture.md](docs/architecture.md).
+In the same setup, with several sessions working, the server used about 1% CPU. The full design, including the edge cases that shaped it, is in [docs/architecture.md](https://github.com/ritikrishu/iterm-dash/blob/main/docs/architecture.md).
 
 ## Privacy and safety
 
@@ -148,7 +148,7 @@ Your terminals hold private work, so iterm-dash is built to keep it on your mach
 - Logs and `iterm-dash smoke` record metadata only (ids, titles, sizes, timings), never screen text.
 - It never sends keystrokes to, resizes or closes your sessions.
 
-See [SECURITY.md](SECURITY.md) to report a vulnerability.
+See [SECURITY.md](https://github.com/ritikrishu/iterm-dash/blob/main/SECURITY.md) to report a vulnerability.
 
 ## How it compares
 
@@ -213,7 +213,7 @@ npm test             # page module tests
 uv run iterm-dash demo
 ```
 
-`iterm-dash demo` serves the real UI fed by scripted sessions, which is how the screenshots above were made. It's the quickest way to work on the page. The tests run against fake sessions, so neither needs iTerm2.
+`iterm-dash demo` serves the real UI fed by scripted sessions, which is how the still screenshots above were made. It's the quickest way to work on the page. The tests run against fake sessions, so neither needs iTerm2.
 
 How the code fits together:
 
@@ -229,8 +229,8 @@ How the code fits together:
 | `surface.py` | Opens the iTerm2 browser tab |
 | `demo.py` | Scripted sessions for UI work |
 
-Read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request, and [docs/architecture.md](docs/architecture.md) for the design and the iTerm2 behaviour it depends on. There's one hard rule: anything that changes a session gets tested only on a throwaway session, and debug output never prints screen text.
+Read [CONTRIBUTING.md](https://github.com/ritikrishu/iterm-dash/blob/main/CONTRIBUTING.md) before opening a pull request, and [docs/architecture.md](https://github.com/ritikrishu/iterm-dash/blob/main/docs/architecture.md) for the design and the iTerm2 behaviour it depends on. There's one hard rule: anything that changes a session gets tested only on a throwaway session, and debug output never prints screen text.
 
 ## License
 
-[MIT](LICENSE). iterm-dash is an independent project, not affiliated with Anthropic or iTerm2. Claude and Claude Code are trademarks of Anthropic.
+[MIT](https://github.com/ritikrishu/iterm-dash/blob/main/LICENSE). iterm-dash is an independent project, not affiliated with Anthropic or iTerm2. Claude and Claude Code are trademarks of Anthropic.
