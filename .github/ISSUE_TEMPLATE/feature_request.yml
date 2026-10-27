@@ -1,0 +1,27 @@
+name: Feature request
+description: Suggest an idea or an improvement.
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: The problem
+      description: What were you trying to do, and what got in the way? A concrete moment helps more than a feature name.
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: What you'd like
+      description: How you picture it working, including any keys or commands.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives you've tried
+      description: Workarounds, other tools, or iTerm2 settings.
+  - type: markdown
+    attributes:
+      value: |
+        iterm-dash is read-only toward your sessions on purpose: it never types into or resizes them. Ideas that would change a session are welcome, but they need a careful design, so expect some discussion first.

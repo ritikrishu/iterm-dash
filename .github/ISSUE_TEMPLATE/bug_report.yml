@@ -1,0 +1,66 @@
+name: Bug report
+description: Something doesn't work the way it should.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a bug. Please don't paste terminal contents or screenshots of your sessions here; they may contain private work.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: What you did, what you expected, and what happened instead.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: The smallest set of steps that shows the problem. Say whether it also happens with `iterm-dash demo`.
+      placeholder: |
+        1. Open three Claude Code sessions in separate tabs
+        2. Run `iterm-dash`
+        3. ...
+    validations:
+      required: true
+  - type: input
+    id: iterm-dash-version
+    attributes:
+      label: iterm-dash version
+      description: "`uv tool list | grep iterm-dash`, or the commit you installed from."
+    validations:
+      required: true
+  - type: input
+    id: iterm2-version
+    attributes:
+      label: iTerm2 version
+      description: iTerm2 › About iTerm2.
+    validations:
+      required: true
+  - type: input
+    id: claude-code-version
+    attributes:
+      label: Claude Code version
+      description: "`claude --version`, if the problem involves Claude Code sessions."
+  - type: input
+    id: macos-version
+    attributes:
+      label: macOS version
+      description: Apple menu › About This Mac.
+    validations:
+      required: true
+  - type: textarea
+    id: log
+    attributes:
+      label: Relevant server.log lines
+      description: |
+        From `~/Library/Application Support/iterm-dash/server.log`. The log should only contain metadata (ids, sizes, counts, timings). Check the lines before you paste them and remove any terminal text you find; if you find any, that's a bug worth reporting too.
+      render: text
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy check
+      options:
+        - label: I removed any terminal contents from this report.
+          required: true

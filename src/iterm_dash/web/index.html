@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>iterm-dash</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="/static/style.css">
+<script type="module" src="/static/app.js"></script>
+</head>
+<body>
+<header id="bar">
+  <span class="brand">iterm-dash</span>
+  <span id="summary" class="sum">Connecting…</span>
+  <span id="conn" class="conn" hidden>Reconnecting…</span>
+  <span id="dbg-sum" class="dbg-sum" hidden></span>
+  <span class="spacer"></span>
+  <button id="show-all" class="chip" type="button" aria-pressed="false"><span class="sw"></span>Show all sessions<span id="show-all-extra"></span><kbd>a</kbd></button>
+  <span id="menu-wrap" class="menu-wrap">
+    <button id="hidden-btn" class="chip" type="button" aria-haspopup="menu" aria-expanded="false">Hidden by you: <span id="hidden-count">0</span> ▾<kbd>H</kbd></button>
+    <div id="hidden-menu" class="menu" role="menu" hidden></div>
+  </span>
+  <button id="help-btn" class="chip" type="button">Shortcuts<kbd>?</kbd></button>
+</header>
+<div id="banner" class="banner" role="alert" hidden>iterm-dash stopped. Run <code>iterm-dash</code> to start it again.</div>
+<main id="main">
+  <div id="grid"></div>
+  <div id="empty" class="empty" hidden></div>
+</main>
+
+<div id="overlay" hidden>
+  <div id="scrim" class="scrim"></div>
+  <div id="panel" class="panel" role="dialog" aria-label="Enlarged session">
+    <div class="head">
+      <span class="num"></span><span class="title"></span><span class="pill"></span><span class="ago"></span>
+      <span class="actions"><button id="ov-jump" class="btn" type="button">Jump to tab ↵</button><button id="ov-close" class="btn ghost" type="button">Close Esc</button></span>
+    </div>
+    <div class="detail"></div>
+    <div class="screen"><div class="rows"></div></div>
+  </div>
+</div>
+
+<div id="help" class="modal" hidden>
+  <div class="card" role="dialog" aria-label="Keyboard shortcuts">
+    <h2>Shortcuts</h2>
+    <dl class="keys">
+      <dt><kbd>1</kbd>–<kbd>9</kbd></dt><dd>Jump to that cell's tab</dd>
+      <dt>Double-click</dt><dd>Jump to the cell's tab</dd>
+      <dt>Click · <kbd>Space</kbd></dt><dd>Enlarge the cell (<kbd>Space</kbd> or <kbd>Esc</kbd> closes)</dd>
+      <dt><kbd>←</kbd><kbd>↑</kbd><kbd>→</kbd><kbd>↓</kbd></dt><dd>Move the focus ring</dd>
+      <dt><kbd>Enter</kbd></dt><dd>Jump to the focused or enlarged cell's tab</dd>
+      <dt><kbd>n</kbd></dt><dd>Next session that needs you (input, then error, then done)</dd>
+      <dt><kbd>h</kbd></dt><dd>Hide the focused cell</dd>
+      <dt><kbd>H</kbd></dt><dd>Hidden by you: bring a session back</dd>
+      <dt><kbd>a</kbd></dt><dd>Show all sessions, or Claude sessions only</dd>
+      <dt><kbd>-</kbd> <kbd>+</kbd></dt><dd>Smaller / larger minimum text size (now <span id="help-font">7</span> px)</dd>
+      <dt><kbd>?</kbd></dt><dd>Show or hide this list</dd>
+      <dt><kbd>Esc</kbd></dt><dd>Close the enlarged view, menu or this list</dd>
+    </dl>
+  </div>
+</div>
+
+<div id="toast" class="toast" role="status" hidden></div>
+
+<template id="cell-tpl">
+  <div class="cell">
+    <div class="head"><span class="num"></span><span class="title"></span><span class="pill"></span><span class="ago"></span><button class="hide" type="button" tabindex="-1">Hide</button></div>
+    <div class="detail"></div>
+    <div class="screen"><div class="rows"></div></div>
+    <div class="dbg"></div>
+  </div>
+</template>
+</body>
+</html>

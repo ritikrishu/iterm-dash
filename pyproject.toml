@@ -1,0 +1,61 @@
+[project]
+name = "iterm-dash"
+version = "0.1.0"
+description = "Live previews of every Claude Code session in iTerm2, in one keyboard-driven tab."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "ritikrishu" }]
+requires-python = ">=3.12"
+keywords = ["iterm2", "claude-code", "terminal", "dashboard", "macos", "developer-tools"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: MacOS X",
+    "Intended Audience :: Developers",
+    "Operating System :: MacOS",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development",
+    "Topic :: Terminals",
+]
+# iterm2 leaves protobuf and websockets (whose deprecated websockets.legacy it uses) unpinned:
+# keep them on the major versions verified here.
+dependencies = ["iterm2>=2.30", "aiohttp>=3.9", "protobuf<8", "websockets<18"]
+
+[project.urls]
+Homepage = "https://github.com/ritikrishu/iterm-dash"
+Source = "https://github.com/ritikrishu/iterm-dash"
+Issues = "https://github.com/ritikrishu/iterm-dash/issues"
+Changelog = "https://github.com/ritikrishu/iterm-dash/blob/main/CHANGELOG.md"
+
+[project.scripts]
+iterm-dash = "iterm_dash.cli:main"
+
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/iterm_dash"]
+
+# An explicit list, so local-only files (git-excluded notes, README media) never ship in the sdist.
+[tool.hatch.build.targets.sdist]
+include = [
+    "src/iterm_dash",
+    "tests",
+    "docs/architecture.md",
+    "README.md",
+    "CHANGELOG.md",
+    "CONTRIBUTING.md",
+    "SECURITY.md",
+    "LICENSE",
+    "package.json",
+    "uv.lock",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
