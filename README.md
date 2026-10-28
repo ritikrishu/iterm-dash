@@ -80,7 +80,7 @@ iterm-dash never types into, resizes or rearranges your sessions. Apart from man
 3. **Install and run iterm-dash** from any iTerm2 tab:
 
    ```sh
-   uv tool install git+https://github.com/ritikrishu/iterm-dash
+   uv tool install iterm-dash
    iterm-dash
    ```
 
@@ -92,7 +92,13 @@ The dashboard opens as a new iTerm2 tab. Run `iterm-dash` again at any time to b
 With pipx (needs Python 3.12 or later):
 
 ```sh
-pipx install git+https://github.com/ritikrishu/iterm-dash
+pipx install iterm-dash
+```
+
+The latest commit on `main`:
+
+```sh
+uv tool install git+https://github.com/ritikrishu/iterm-dash
 ```
 
 From a clone:
@@ -102,11 +108,11 @@ git clone https://github.com/ritikrishu/iterm-dash && cd iterm-dash
 uv tool install --editable .
 ```
 
-To update, stop the server and reinstall from the latest commit:
+To update, stop the server and upgrade:
 
 ```sh
 iterm-dash stop
-uv tool install --reinstall git+https://github.com/ritikrishu/iterm-dash
+uv tool upgrade iterm-dash
 ```
 
 To uninstall, stop the server and remove the tool. Settings and logs live in `~/Library/Application Support/iterm-dash/`.

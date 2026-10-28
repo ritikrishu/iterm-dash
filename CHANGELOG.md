@@ -4,6 +4,18 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-10-28
+
+### Changed
+
+- iterm-dash is on PyPI: install it with `uv tool install iterm-dash` or `pipx install iterm-dash`, and update with `uv tool upgrade iterm-dash`.
+- The README opens with a recording of the dashboard in a real iTerm2 window, including `n` and `2` switching tabs.
+- README images and links are absolute, so they also show on PyPI.
+
+### Added
+
+- A release workflow publishes version tags to PyPI through Trusted Publishing, with PEP 740 attestations.
+
 ## [0.1.0] - 2026-10-27
 
 First release.
@@ -29,5 +41,6 @@ First release.
 - `iterm-dash stop` stops the server, `iterm-dash smoke` prints a metadata-only check of your sessions, and `iterm-dash demo` serves a dashboard of made-up sessions.
 - The server binds to `127.0.0.1`, requires a per-run token, and never changes your sessions; focusing a tab is its only action.
 
-[Unreleased]: https://github.com/ritikrishu/iterm-dash/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/ritikrishu/iterm-dash/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/ritikrishu/iterm-dash/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/ritikrishu/iterm-dash/releases/tag/v0.1.0
